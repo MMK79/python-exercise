@@ -27,9 +27,14 @@ def binary_cube(N, eps = 0.1, counter = 1000):
     binary version of finding cube root
     """
     count = 0
-    low = 0
-    high = N/2
-    guess = ( low + high )/2
+    if N > 1:
+        low = 0
+        high = N/2
+        guess = ( low + high )/2
+    else:
+        low = 0
+        high = 1
+        guess = ( low + high )/2
     while abs( N - guess**3 ) > eps and count < counter:
         if guess**3 == N:
             print(f"Your number is perfect cube of {guess}")
