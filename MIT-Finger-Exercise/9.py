@@ -1,0 +1,32 @@
+def dot_product(tA, tB):
+    """
+    tA: a tuple of numbers
+    tB: a tuple of numbers of the same length as tA
+    Assumes tA and tB are the same length.
+    Returns a tuple where the:
+    * first element is the length of one of the tuples
+    * second element is the sum of the pairwise products of tA and tB
+    """
+    if len(tA) != len(tB):
+        raise ValueError("Not the same length")
+    for i in range(len(tA)):
+        if ( type(i) != int or float ):
+            raise ValueError(f"Your values in position {i} are tA not float or integer")
+    for j in range(len(tB)):
+        if ( type(j) != int or float ):
+            raise ValueError(f"Your values in postion {j} in tB are not float or integer")
+
+
+    total = 0
+    for i in range(len(tA)):
+        total += tA[i]*tB[i]
+    return (len(tA), total)
+
+# Unit-test:
+tA = (1, 2, 3)
+tB = (4, 5, 6)
+print(dot_product(tA, tB)) # prints (3,32)
+
+tA = ('s', 2, 3)
+tB = (4, 5, 6)
+print(dot_product(tA, tB)) # prints (3,32)
