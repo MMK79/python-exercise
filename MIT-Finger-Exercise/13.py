@@ -1,3 +1,20 @@
+# Doing it with creating new list
+L_new = []
+def list_conv_new_l(L):
+    for i in range(len(L)):
+        if type(L[i]) == list:
+            list_conv_new_l(L[i])
+        else:
+            L_new.append(L[i])
+
+# L1 = [1, [1, 2], 3, 5, [7, 8]]
+# list_conv_new_l(L1)
+# print(L_new)
+# L_new.clear()
+# L2 = [1, [1, 2, [5, 6]]]
+# list_conv_new_l(L2)
+# print(L_new)
+
 def sum_str_lengths(L):
     """
     L is a non-empty list containing either: 
