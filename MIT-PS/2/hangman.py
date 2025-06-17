@@ -148,19 +148,19 @@ def hangman(secret_word, with_help=False):
         guess_input = input("Guess a Character:")
 
         # Check Guess input
-        while len(guess_input) > 1 or len(guess_input) == 0 or guess_input in guess:
-            # Check if user entering same character
-            if guess_input in guess:
-                print()
-                print(get_available_letters(guess))
-                guess_input = input("You entered same character, enter different one from the list below: \n")
-                print()
-
-            elif guess_input in '1234567890':
+        while len(guess_input) > 1 or len(guess_input) == 0 or guess_input in guess or guess_input in '1234567890':
+            if guess_input in '1234567890':
                 print()
                 print("These are Valid input character",get_available_letters(guess))
                 print("You are playing word game not numb game!")
                 guess_input = input("Enter Valid Char, if you want help type !:\n")
+                print()
+
+            # Check if user entering same character
+            elif guess_input in guess:
+                print()
+                print(get_available_letters(guess))
+                guess_input = input("You entered same character, enter different one from the list below: \n")
                 print()
 
             # Check if user entering single character
@@ -207,22 +207,22 @@ def hangman(secret_word, with_help=False):
             print("You Won!")
 
 
-
-    print("Sorry you lost :(")
-    start = int(input("Wanna start new game? if yes type 1, if not type 0.\n"))
-    flag = True
-    while flag:
-        if start == 1:
-            secret_word = choose_word(wordlist)
-            guess.clear()
-            flag = False
-            return hangman(secret_word)
-        elif start == 0:
-            print(":(")
-            flag = False
-            return None
-        else:
-            start = int(input("only 1 and 0, if yes type 1, if not type 0.\n"))
+    if not has_player_won(secret_word, guess):
+        print("Sorry you lost :(")
+        start = int(input("Wanna start new game? if yes type 1, if not type 0.\n"))
+        flag = True
+        while flag:
+            if start == 1:
+                secret_word = choose_word(wordlist)
+                guess.clear()
+                flag = False
+                return hangman(secret_word)
+            elif start == 0:
+                print(":(")
+                flag = False
+                return None
+            else:
+                start = int(input("only 1 and 0, if yes type 1, if not type 0.\n"))
 
 guess = []
 
