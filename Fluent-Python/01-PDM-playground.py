@@ -110,4 +110,3 @@ def spades_high(card):
 
 for card in sorted(deck, key=spades_high):
     print(f"score of {card} is {spades_high(card)}")
-
