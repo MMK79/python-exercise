@@ -1,0 +1,774 @@
+{ {
+    _log_prefix = "LSP[pyright]",
+    _on_attach_cbs = { <function 1> },
+    _on_exit_cbs = { <function 2> },
+    _on_init_cbs = {},
+    _trace = "off",
+    attached_buffers = { true },
+    cancel_request = <function 3>,
+    capabilities = {
+      general = {
+        positionEncodings = { "utf-8", "utf-16", "utf-32" }
+      },
+      textDocument = {
+        callHierarchy = {
+          dynamicRegistration = false
+        },
+        codeAction = {
+          codeActionLiteralSupport = {
+            codeActionKind = {
+              valueSet = { "", "quickfix", "refactor", "refactor.extract", "refactor.inline", "refactor.rewrite", "source", "source.organizeImports" }
+            }
+          },
+          dataSupport = true,
+          dynamicRegistration = true,
+          isPreferredSupport = true,
+          resolveSupport = {
+            properties = { "edit", "command" }
+          }
+        },
+        codeLens = {
+          dynamicRegistration = false,
+          resolveSupport = {
+            properties = { "command" }
+          }
+        },
+        completion = {
+          completionItem = {
+            commitCharactersSupport = false,
+            deprecatedSupport = true,
+            documentationFormat = <1>{ "markdown", "plaintext" },
+            insertReplaceSupport = true,
+            insertTextModeSupport = <2>{
+              valueSet = { 1 }
+            },
+            labelDetailsSupport = true,
+            preselectSupport = false,
+            resolveSupport = {
+              properties = <3>{ "documentation", "detail", "additionalTextEdits", "command", "data" }
+            },
+            snippetSupport = true,
+            tagSupport = {
+              valueSet = <4>{ 1 }
+            }
+          },
+          completionItemKind = {
+            valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 }
+          },
+          completionList = {
+            itemDefaults = <5>{ "commitCharacters", "editRange", "insertTextFormat", "insertTextMode", "data" }
+          },
+          contextSupport = true,
+          dynamicRegistration = false,
+          insertTextMode = 1
+        },
+        declaration = {
+          linkSupport = true
+        },
+        definition = {
+          dynamicRegistration = true,
+          linkSupport = true
+        },
+        diagnostic = {
+          dynamicRegistration = false
+        },
+        documentHighlight = {
+          dynamicRegistration = false
+        },
+        documentSymbol = {
+          dynamicRegistration = false,
+          hierarchicalDocumentSymbolSupport = true,
+          symbolKind = {
+            valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+          }
+        },
+        foldingRange = {
+          dynamicRegistration = false,
+          foldingRange = {
+            collapsedText = true
+          },
+          lineFoldingOnly = true
+        },
+        formatting = {
+          dynamicRegistration = true
+        },
+        hover = {
+          contentFormat = { "markdown", "plaintext" },
+          dynamicRegistration = true
+        },
+        implementation = {
+          linkSupport = true
+        },
+        inlayHint = {
+          dynamicRegistration = true,
+          resolveSupport = {
+            properties = { "textEdits", "tooltip", "location", "command" }
+          }
+        },
+        publishDiagnostics = {
+          dataSupport = true,
+          relatedInformation = true,
+          tagSupport = {
+            valueSet = { 1, 2 }
+          }
+        },
+        rangeFormatting = {
+          dynamicRegistration = true,
+          rangesSupport = true
+        },
+        references = {
+          dynamicRegistration = false
+        },
+        rename = {
+          dynamicRegistration = true,
+          prepareSupport = true
+        },
+        semanticTokens = {
+          augmentsSyntaxTokens = true,
+          dynamicRegistration = false,
+          formats = { "relative" },
+          multilineTokenSupport = false,
+          overlappingTokenSupport = true,
+          requests = {
+            full = {
+              delta = true
+            },
+            range = false
+          },
+          serverCancelSupport = false,
+          tokenModifiers = { "declaration", "definition", "readonly", "static", "deprecated", "abstract", "async", "modification", "documentation", "defaultLibrary" },
+          tokenTypes = { "namespace", "type", "class", "enum", "interface", "struct", "typeParameter", "parameter", "variable", "property", "enumMember", "event", "function", "method", "macro", "keyword", "modifier", "comment", "string", "number", "regexp", "operator", "decorator" }
+        },
+        signatureHelp = {
+          dynamicRegistration = false,
+          signatureInformation = {
+            activeParameterSupport = true,
+            documentationFormat = { "markdown", "plaintext" },
+            parameterInformation = {
+              labelOffsetSupport = true
+            }
+          }
+        },
+        synchronization = {
+          didSave = true,
+          dynamicRegistration = false,
+          willSave = true,
+          willSaveWaitUntil = true
+        },
+        typeDefinition = {
+          linkSupport = true
+        }
+      },
+      window = {
+        showDocument = {
+          support = true
+        },
+        showMessage = {
+          messageActionItem = {
+            additionalPropertiesSupport = true
+          }
+        },
+        workDoneProgress = true
+      },
+      workspace = {
+        applyEdit = true,
+        configuration = true,
+        didChangeConfiguration = {
+          dynamicRegistration = false
+        },
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+          relativePatternSupport = true
+        },
+        inlayHint = {
+          refreshSupport = true
+        },
+        semanticTokens = {
+          refreshSupport = true
+        },
+        symbol = {
+          dynamicRegistration = false,
+          symbolKind = {
+            valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+          }
+        },
+        workspaceEdit = {
+          resourceOperations = { "rename", "create", "delete" }
+        },
+        workspaceFolders = true
+      }
+    },
+    commands = {},
+    config = {
+      capabilities = {
+        textDocument = {
+          completion = {
+            completionItem = {
+              commitCharactersSupport = false,
+              deprecatedSupport = true,
+              documentationFormat = <table 1>,
+              insertReplaceSupport = true,
+              insertTextModeSupport = <table 2>,
+              labelDetailsSupport = true,
+              preselectSupport = false,
+              resolveSupport = {
+                properties = <table 3>
+              },
+              snippetSupport = true,
+              tagSupport = {
+                valueSet = <table 4>
+              }
+            },
+            completionList = {
+              itemDefaults = <table 5>
+            },
+            contextSupport = true,
+            insertTextMode = 1
+          }
+        }
+      },
+      cmd = { "pyright-langserver", "--stdio" },
+      filetypes = { "python" },
+      name = "pyright",
+      on_attach = <function 1>,
+      root_dir = "/Users/masoudkord/Documents/projects/Python-Exercise",
+      root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" },
+      settings = <6>{
+        python = {
+          analysis = {
+            autoSearchPaths = true,
+            diagnosticMode = "openFilesOnly",
+            useLibraryCodeForTypes = true
+          }
+        }
+      }
+    },
+    dynamic_capabilities = {
+      capabilities = <7>{
+        ["workspace/didChangeWatchedFiles"] = { {
+            id = "dc0b6aa8-f682-4336-858f-1dd78b966678",
+            method = "workspace/didChangeWatchedFiles",
+            registerOptions = {
+              watchers = { {
+                  globPattern = "**/pyrightconfig.json",
+                  kind = 7
+                }, {
+                  globPattern = "**",
+                  kind = 7
+                }, {
+                  globPattern = {
+                    baseUri = "file:///opt/anaconda3/envs/ai/lib/python3.12",
+                    pattern = "**"
+                  },
+                  kind = 7
+                } }
+            }
+          } }
+      },
+      client_id = 1,
+      get = <function 4>,
+      register = <function 5>,
+      supports = <function 6>,
+      supports_registration = <function 7>,
+      unregister = <function 8>
+    },
+    flags = {},
+    get_language_id = <function 9>,
+    handlers = {},
+    id = 1,
+    initialized = true,
+    is_stopped = <function 10>,
+    messages = {
+      messages = {},
+      name = "pyright",
+      progress = {},
+      status = {}
+    },
+    name = "pyright",
+    notify = <function 11>,
+    offset_encoding = "utf-16",
+    on_attach = <function 12>,
+    progress = {
+      _idx_read = 0,
+      _idx_write = 0,
+      _items = {},
+      _size = 51,
+      pending = {},
+      <metatable> = {
+        __call = <function 13>,
+        __index = <8>{
+          clear = <function 14>,
+          peek = <function 15>,
+          pop = <function 16>,
+          push = <function 17>
+        }
+      }
+    },
+    registrations = <table 7>,
+    request = <function 18>,
+    request_sync = <function 19>,
+    requests = {},
+    root_dir = "/Users/masoudkord/Documents/projects/Python-Exercise",
+    rpc = {
+      is_closing = <function 20>,
+      notify = <function 21>,
+      request = <function 22>,
+      terminate = <function 23>
+    },
+    server_capabilities = {
+      callHierarchyProvider = true,
+      codeActionProvider = {
+        codeActionKinds = { "quickfix", "source.organizeImports" },
+        workDoneProgress = true
+      },
+      completionProvider = {
+        completionItem = {
+          labelDetailsSupport = true
+        },
+        resolveProvider = true,
+        triggerCharacters = { ".", "[", '"', "'" },
+        workDoneProgress = true
+      },
+      declarationProvider = {
+        workDoneProgress = true
+      },
+      definitionProvider = {
+        workDoneProgress = true
+      },
+      documentHighlightProvider = {
+        workDoneProgress = true
+      },
+      documentSymbolProvider = {
+        workDoneProgress = true
+      },
+      executeCommandProvider = {
+        commands = {},
+        workDoneProgress = true
+      },
+      hoverProvider = {
+        workDoneProgress = true
+      },
+      referencesProvider = {
+        workDoneProgress = true
+      },
+      renameProvider = {
+        prepareProvider = true,
+        workDoneProgress = true
+      },
+      signatureHelpProvider = {
+        triggerCharacters = { "(", ",", ")" },
+        workDoneProgress = true
+      },
+      textDocumentSync = {
+        change = 2,
+        openClose = true,
+        save = {
+          includeText = false
+        },
+        willSave = false,
+        willSaveWaitUntil = false
+      },
+      typeDefinitionProvider = {
+        workDoneProgress = true
+      },
+      workspace = {
+        workspaceFolders = {
+          changeNotifications = true,
+          supported = true
+        }
+      },
+      workspaceSymbolProvider = {
+        workDoneProgress = true
+      }
+    },
+    settings = <table 6>,
+    stop = <function 24>,
+    supports_method = <function 25>,
+    workspace_folders = { {
+        name = "/Users/masoudkord/Documents/projects/Python-Exercise",
+        uri = "file:///Users/masoudkord/Documents/projects/Python-Exercise"
+      } },
+    <metatable> = <9>{
+      __index = <table 9>,
+      _add_workspace_folder = <function 26>,
+      _get_language_id = <function 27>,
+      _get_registration = <function 28>,
+      _get_registration_options = <function 29>,
+      _notification = <function 30>,
+      _on_error = <function 31>,
+      _on_exit = <function 32>,
+      _process_request = <function 33>,
+      _register = <function 34>,
+      _register_dynamic = <function 35>,
+      _remove_workspace_folder = <function 36>,
+      _resolve_handler = <function 37>,
+      _run_callbacks = <function 38>,
+      _server_request = <function 39>,
+      _supports_registration = <function 40>,
+      _text_document_did_open_handler = <function 41>,
+      _unregister = <function 42>,
+      _unregister_dynamic = <function 43>,
+      cancel_request = <function 44>,
+      create = <function 45>,
+      exec_cmd = <function 46>,
+      initialize = <function 47>,
+      is_stopped = <function 48>,
+      notify = <function 49>,
+      on_attach = <function 50>,
+      request = <function 51>,
+      request_sync = <function 52>,
+      stop = <function 53>,
+      supports_method = <function 54>,
+      write_error = <function 55>
+    }
+  }, {
+    _log_prefix = "LSP[ruff]",
+    _on_attach_cbs = {},
+    _on_exit_cbs = { <function 2> },
+    _on_init_cbs = {},
+    _trace = "off",
+    attached_buffers = { true },
+    cancel_request = <function 56>,
+    capabilities = {
+      general = {
+        positionEncodings = { "utf-8", "utf-16", "utf-32" }
+      },
+      textDocument = {
+        callHierarchy = {
+          dynamicRegistration = false
+        },
+        codeAction = {
+          codeActionLiteralSupport = {
+            codeActionKind = {
+              valueSet = { "", "quickfix", "refactor", "refactor.extract", "refactor.inline", "refactor.rewrite", "source", "source.organizeImports" }
+            }
+          },
+          dataSupport = true,
+          dynamicRegistration = true,
+          isPreferredSupport = true,
+          resolveSupport = {
+            properties = { "edit", "command" }
+          }
+        },
+        codeLens = {
+          dynamicRegistration = false,
+          resolveSupport = {
+            properties = { "command" }
+          }
+        },
+        completion = {
+          completionItem = {
+            commitCharactersSupport = false,
+            deprecatedSupport = true,
+            documentationFormat = <10>{ "markdown", "plaintext" },
+            insertReplaceSupport = true,
+            insertTextModeSupport = <11>{
+              valueSet = { 1 }
+            },
+            labelDetailsSupport = true,
+            preselectSupport = false,
+            resolveSupport = {
+              properties = <12>{ "documentation", "detail", "additionalTextEdits", "command", "data" }
+            },
+            snippetSupport = true,
+            tagSupport = {
+              valueSet = <13>{ 1 }
+            }
+          },
+          completionItemKind = {
+            valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 }
+          },
+          completionList = {
+            itemDefaults = <14>{ "commitCharacters", "editRange", "insertTextFormat", "insertTextMode", "data" }
+          },
+          contextSupport = true,
+          dynamicRegistration = false,
+          insertTextMode = 1
+        },
+        declaration = {
+          linkSupport = true
+        },
+        definition = {
+          dynamicRegistration = true,
+          linkSupport = true
+        },
+        diagnostic = {
+          dynamicRegistration = false
+        },
+        documentHighlight = {
+          dynamicRegistration = false
+        },
+        documentSymbol = {
+          dynamicRegistration = false,
+          hierarchicalDocumentSymbolSupport = true,
+          symbolKind = {
+            valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+          }
+        },
+        foldingRange = {
+          dynamicRegistration = false,
+          foldingRange = {
+            collapsedText = true
+          },
+          lineFoldingOnly = true
+        },
+        formatting = {
+          dynamicRegistration = true
+        },
+        hover = {
+          contentFormat = { "markdown", "plaintext" },
+          dynamicRegistration = true
+        },
+        implementation = {
+          linkSupport = true
+        },
+        inlayHint = {
+          dynamicRegistration = true,
+          resolveSupport = {
+            properties = { "textEdits", "tooltip", "location", "command" }
+          }
+        },
+        publishDiagnostics = {
+          dataSupport = true,
+          relatedInformation = true,
+          tagSupport = {
+            valueSet = { 1, 2 }
+          }
+        },
+        rangeFormatting = {
+          dynamicRegistration = true,
+          rangesSupport = true
+        },
+        references = {
+          dynamicRegistration = false
+        },
+        rename = {
+          dynamicRegistration = true,
+          prepareSupport = true
+        },
+        semanticTokens = {
+          augmentsSyntaxTokens = true,
+          dynamicRegistration = false,
+          formats = { "relative" },
+          multilineTokenSupport = false,
+          overlappingTokenSupport = true,
+          requests = {
+            full = {
+              delta = true
+            },
+            range = false
+          },
+          serverCancelSupport = false,
+          tokenModifiers = { "declaration", "definition", "readonly", "static", "deprecated", "abstract", "async", "modification", "documentation", "defaultLibrary" },
+          tokenTypes = { "namespace", "type", "class", "enum", "interface", "struct", "typeParameter", "parameter", "variable", "property", "enumMember", "event", "function", "method", "macro", "keyword", "modifier", "comment", "string", "number", "regexp", "operator", "decorator" }
+        },
+        signatureHelp = {
+          dynamicRegistration = false,
+          signatureInformation = {
+            activeParameterSupport = true,
+            documentationFormat = { "markdown", "plaintext" },
+            parameterInformation = {
+              labelOffsetSupport = true
+            }
+          }
+        },
+        synchronization = {
+          didSave = true,
+          dynamicRegistration = false,
+          willSave = true,
+          willSaveWaitUntil = true
+        },
+        typeDefinition = {
+          linkSupport = true
+        }
+      },
+      window = {
+        showDocument = {
+          support = true
+        },
+        showMessage = {
+          messageActionItem = {
+            additionalPropertiesSupport = true
+          }
+        },
+        workDoneProgress = true
+      },
+      workspace = {
+        applyEdit = true,
+        configuration = true,
+        didChangeConfiguration = {
+          dynamicRegistration = false
+        },
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+          relativePatternSupport = true
+        },
+        inlayHint = {
+          refreshSupport = true
+        },
+        semanticTokens = {
+          refreshSupport = true
+        },
+        symbol = {
+          dynamicRegistration = false,
+          symbolKind = {
+            valueSet = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 }
+          }
+        },
+        workspaceEdit = {
+          resourceOperations = { "rename", "create", "delete" }
+        },
+        workspaceFolders = true
+      }
+    },
+    commands = {},
+    config = {
+      capabilities = {
+        textDocument = {
+          completion = {
+            completionItem = {
+              commitCharactersSupport = false,
+              deprecatedSupport = true,
+              documentationFormat = <table 10>,
+              insertReplaceSupport = true,
+              insertTextModeSupport = <table 11>,
+              labelDetailsSupport = true,
+              preselectSupport = false,
+              resolveSupport = {
+                properties = <table 12>
+              },
+              snippetSupport = true,
+              tagSupport = {
+                valueSet = <table 13>
+              }
+            },
+            completionList = {
+              itemDefaults = <table 14>
+            },
+            contextSupport = true,
+            insertTextMode = 1
+          }
+        }
+      },
+      cmd = { "ruff", "server" },
+      filetypes = { "python" },
+      name = "ruff",
+      root_dir = "/Users/masoudkord/Documents/projects/Python-Exercise",
+      root_markers = { "pyproject.toml", "ruff.toml", ".ruff.toml", ".git" },
+      settings = <15>{}
+    },
+    dynamic_capabilities = {
+      capabilities = <16>{
+        ["workspace/didChangeWatchedFiles"] = { {
+            id = "ruff-server-watch",
+            method = "workspace/didChangeWatchedFiles",
+            registerOptions = {
+              watchers = { {
+                  globPattern = "**/.ruff.toml"
+                }, {
+                  globPattern = "**/ruff.toml"
+                }, {
+                  globPattern = "**/pyproject.toml"
+                } }
+            }
+          } }
+      },
+      client_id = 2,
+      get = <function 57>,
+      register = <function 58>,
+      supports = <function 59>,
+      supports_registration = <function 60>,
+      unregister = <function 61>
+    },
+    flags = {},
+    get_language_id = <function 9>,
+    handlers = {},
+    id = 2,
+    initialized = true,
+    is_stopped = <function 62>,
+    messages = {
+      messages = {},
+      name = "ruff",
+      progress = {},
+      status = {}
+    },
+    name = "ruff",
+    notify = <function 63>,
+    offset_encoding = "utf-8",
+    on_attach = <function 64>,
+    progress = {
+      _idx_read = 0,
+      _idx_write = 0,
+      _items = {},
+      _size = 51,
+      pending = {},
+      <metatable> = {
+        __call = <function 65>,
+        __index = <table 8>
+      }
+    },
+    registrations = <table 16>,
+    request = <function 66>,
+    request_sync = <function 67>,
+    requests = {},
+    root_dir = "/Users/masoudkord/Documents/projects/Python-Exercise",
+    rpc = {
+      is_closing = <function 68>,
+      notify = <function 69>,
+      request = <function 70>,
+      terminate = <function 71>
+    },
+    server_capabilities = {
+      codeActionProvider = {
+        codeActionKinds = { "quickfix", "source.fixAll.ruff", "source.organizeImports.ruff", "notebook.source.fixAll.ruff", "notebook.source.organizeImports.ruff" },
+        resolveProvider = true,
+        workDoneProgress = true
+      },
+      diagnosticProvider = {
+        identifier = "Ruff",
+        interFileDependencies = false,
+        workDoneProgress = true,
+        workspaceDiagnostics = false
+      },
+      documentFormattingProvider = true,
+      documentRangeFormattingProvider = true,
+      executeCommandProvider = {
+        commands = { "ruff.applyFormat", "ruff.applyAutofix", "ruff.applyOrganizeImports", "ruff.printDebugInformation" },
+        workDoneProgress = false
+      },
+      hoverProvider = true,
+      notebookDocumentSync = {
+        notebookSelector = { {
+            cells = { {
+                language = "python"
+              } }
+          } },
+        save = false
+      },
+      positionEncoding = "utf-8",
+      textDocumentSync = {
+        change = 2,
+        openClose = true,
+        willSave = false,
+        willSaveWaitUntil = false
+      },
+      workspace = {
+        workspaceFolders = {
+          changeNotifications = true,
+          supported = true
+        }
+      }
+    },
+    server_info = {
+      name = "ruff",
+      version = "0.14.4"
+    },
+    settings = <table 15>,
+    stop = <function 72>,
+    supports_method = <function 73>,
+    workspace_folders = { {
+        name = "/Users/masoudkord/Documents/projects/Python-Exercise",
+        uri = "file:///Users/masoudkord/Documents/projects/Python-Exercise"
+      } },
+    <metatable> = <table 9>
+  } }
