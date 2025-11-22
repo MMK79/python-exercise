@@ -17,7 +17,7 @@ def delete_dsstore():
 
 
 def get_files(path=script_directory()):
-    path = r"/Volumes/ADATA HD330/Courses/Downloads/"
+    path = r"/Volumes/ADATA HD330/Courses/Downloads/FrontendMaster Courses/"
     ls = listdir(path)
     files = [f for f in listdir(path) if isfile(join(path, f))]
     folders = list(set(ls) - set(files))
@@ -27,10 +27,10 @@ def get_files(path=script_directory()):
 def name_changer(path, folders_name: list):
     for folder_name in folders_name:
         src = join(path, folder_name)
-        if folder_name.find(" "):
-            splits = folder_name.split(" ")
-        else:
+        if folder_name.find("_"):
             splits = folder_name.split("_")
+        else:
+            splits = folder_name.split(" ")
         try:
             splits.remove("Downloadly")
         except:
@@ -45,11 +45,10 @@ def name_changer(path, folders_name: list):
                     splits[count] = split
                 count += 1
             changed_name = " ".join(splits)
-            if changed_name.find("-"):
+            if changed_name.find("-") != -1:
                 changed_name = changed_name.split("-")
                 changed_name.pop()
                 changed_name = "".join(changed_name)
-                print(changed_name)
             dest = join(path, changed_name)
             try:
                 os.rename(src, dest)
