@@ -17,10 +17,12 @@ def retreive_images_links():
             images_links_list.pop()
             return images_links_list
     else:
-        print("Create a images_download_list.txt and put each link in one line")
+        raise Exception(
+            "Create a images_download_list.txt and put each link in one line"
+        )
 
 
-def batch(image_l=retreive_images_links()):
+def batching(image_l=retreive_images_links()):
     batch_45 = []
     # base case
     if len(image_l) <= 45:
@@ -28,7 +30,24 @@ def batch(image_l=retreive_images_links()):
         return batch_45
     # recursive step
     else:
-        return batch(image_l[:45]) + batch(image_l[45:])
+        return batching(image_l[:45]) + batching(image_l[45:])
+
+
+def get_html(link):
+    return requests.get(link).text
+
+
+async def image_data_extractor(batch):
+    for link in batch:
+        html = await get_html(link)
+        soup = BeautifulSoup(html, "lxml")
+        main_tag = soup.find("main")
+        image_div = main_tag.find("img")
+        image_dic = image_div.attrs
+        image_link = image_dic["src"]
+        image_id = image_link.split("/")
+        image_id = image_id[-1]
+        return [image_link, image_id]
 
 
 def scrap_image_link():
@@ -37,17 +56,9 @@ def scrap_image_link():
     Return: image links
     """
     images_link_id_list = []
-    batches = batch()
+    batches = batching()
     for batch in batches:
-        html = requests.get(batch).text
-        soup = BeautifulSoup(html, "lxml")
-        main_tag = soup.find("main")
-        image_div = main_tag.find("img")
-        image_dic = image_div.attrs
-        image_link = image_dic["src"]
-        image_id = image_link.split("/")
-        image_id = image_id[-1]
-        images_link_id_list.append([image_link, image_id])
+        images_link_id_list.append(image_data_extractor(batch))
     return images_link_id_list
 
 
@@ -65,3 +76,6 @@ def download_images():
         file_loc = os.path.join(download_path, image_name)
         with open(file_loc, "wb") as image:
             image.write(requests.get(image_link_id_list[0]).content)
+
+
+scrap_image_link()
