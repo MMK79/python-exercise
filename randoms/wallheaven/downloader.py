@@ -1,16 +1,34 @@
-import requests_html
-from requests_html import HTMLSession, AsyncHTMLSession
+from bs4 import BeautifulSoup
+import requests
+import os
+from os import listdir
 
 
 def retreive_images_links():
     """Open images_download_list.txt file
     Return: list of images links url
     """
-    with open("images_download_list.txt", "r") as images_link:
-        images_link = images_link.read()
-        images_links_list = images_link.split("\n")
-        last_one = images_links_list.pop()
-        return images_links_list
+    file_name = "images_download_list.txt"
+    dir_list = listdir()
+    if file_name in dir_list:
+        with open(file_name, "r") as images_link:
+            images_link = images_link.read()
+            images_links_list = images_link.split("\n")
+            images_links_list.pop()
+            return images_links_list
+    else:
+        print("Create a images_download_list.txt and put each link in one line")
+
+
+def batch(image_l=retreive_images_links()):
+    batch_45 = []
+    # base case
+    if len(image_l) <= 45:
+        batch_45.append(image_l)
+        return batch_45
+    # recursive step
+    else:
+        return batch(image_l[:45]) + batch(image_l[45:])
 
 
 def scrap_image_link():
@@ -18,17 +36,32 @@ def scrap_image_link():
     input: images links list
     Return: image links
     """
-    images_links_list = retreive_images_links()
-    for i in images_links_list:
-        print(i)
-        session = HTMLSession()
-        r = session.get(i)
-        html = r.html
-        print(html)
-        # image_link = r.find("main")
-        # print(image_link)
-        # for i in image_link:
-        #     print(i)
+    images_link_id_list = []
+    batches = batch()
+    for batch in batches:
+        html = requests.get(batch).text
+        soup = BeautifulSoup(html, "lxml")
+        main_tag = soup.find("main")
+        image_div = main_tag.find("img")
+        image_dic = image_div.attrs
+        image_link = image_dic["src"]
+        image_id = image_link.split("/")
+        image_id = image_id[-1]
+        images_link_id_list.append([image_link, image_id])
+    return images_link_id_list
 
 
-scrap_image_link()
+async def get_images(i):
+    return requests.get(i).content
+
+
+def download_images():
+    """Download images
+    Return:None"""
+    images_link_id_list = scrap_image_link()
+    download_path = "/Volumes/MASOUD/Gallery/Background/"
+    for image_link_id_list in images_link_id_list:
+        image_name = image_link_id_list[1]
+        file_loc = os.path.join(download_path, image_name)
+        with open(file_loc, "wb") as image:
+            image.write(requests.get(image_link_id_list[0]).content)
